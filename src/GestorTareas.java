@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestorTareas {
+public class GestorTareas implements Accionable {
     private List<Tarea> tareas;
     private int siguienteId;
 
@@ -11,6 +11,7 @@ public class GestorTareas {
     }
 
     // Agregar una nueva tarea
+    @Override
     public void agregarTarea(String nombre, int prioridad, boolean esUrgente) {
         Tarea tarea;
         if (esUrgente) {
@@ -24,6 +25,7 @@ public class GestorTareas {
     }
 
     // Listar todas las tareas
+    @Override
     public void listarTareas() {
         if (tareas.isEmpty()) {
             System.out.println("\nNo hay tareas registradas.");
@@ -57,7 +59,8 @@ public class GestorTareas {
     }
 
     // Mostrar una tarea formateada
-    private void mostrarTarea(Tarea tarea) {
+    @Override
+    public void mostrarTarea(Tarea tarea) {
         String tipo = tarea instanceof TareaUrgente ? "[URGENTE]" : "[NORMAL]";
         String estado = tarea.isCompletado() ? "[✓]" : "[ ]";
         System.out.printf("%s ID: %d | %s | Prioridad: %d | %s\n",
@@ -65,6 +68,7 @@ public class GestorTareas {
     }
 
     // Marcar una tarea como completada
+    @Override
     public void marcarCompletada(int id) {
         for (Tarea tarea : tareas) {
             if (tarea.getId() == id) {
@@ -81,6 +85,7 @@ public class GestorTareas {
     }
 
     // Eliminar una tarea
+    @Override
     public void eliminarTarea(int id) {
         for (Tarea tarea : tareas) {
             if (tarea.getId() == id) {

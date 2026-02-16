@@ -6,8 +6,8 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println("╔════════════════════════════════════╗");
-        System.out.println("║   BIENVENIDO A SMARTTASK            ║");
-        System.out.println("║   Gestor de Tareas Inteligente      ║");
+        System.out.println("║   BIENVENIDO A SMARTTASK           ║");
+        System.out.println("║   Gestor de Tareas Inteligente     ║");
         System.out.println("╚════════════════════════════════════╝\n");
 
         boolean ejecutando = true;
