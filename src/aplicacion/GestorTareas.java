@@ -1,17 +1,37 @@
 package aplicacion;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestor centralizado de tareas del sistema SmartTask.
+ * Permite crear, listar, marcar como completadas y eliminar tareas.
+ * Diferencia entre tareas urgentes y normales.
+ * 
+ * @author SmartTask Team
+ * @version 1.0
+ */
 public class GestorTareas implements Accionable {
     private List<Tarea> tareas;
     private int siguienteId;
 
+    /**
+     * Constructor que inicializa el gestor de tareas.
+     * Crea una lista vacía y establece el contador de IDs en 1.
+     */
     public GestorTareas() {
         this.tareas = new ArrayList<>();
         this.siguienteId = 1;
     }
 
-    // Agregar una nueva tarea
+    /**
+     * Agrega una nueva tarea a la lista.
+     * Crea automáticamente una TareaUrgente o TareaNormal según el parámetro.
+     * 
+     * @param nombre el nombre descriptivo de la tarea
+     * @param prioridad el nivel de prioridad (escala numérica)
+     * @param esUrgente true si la tarea es urgente, false si es normal
+     */
     @Override
     public void agregarTarea(String nombre, int prioridad, boolean esUrgente) {
         Tarea tarea;
@@ -25,7 +45,11 @@ public class GestorTareas implements Accionable {
         siguienteId++;
     }
 
-    // Listar todas las tareas
+    /**
+     * Lista todas las tareas separadas en dos grupos:
+     * tareas activas (no completadas) y tareas completadas.
+     * Muestra un mensaje si no hay tareas registradas.
+     */
     @Override
     public void listarTareas() {
         if (tareas.isEmpty()) {
@@ -59,7 +83,12 @@ public class GestorTareas implements Accionable {
         System.out.println();
     }
 
-    // Mostrar una tarea formateada
+    /**
+     * Muestra una tarea formateada con su información completa.
+     * Incluye estado, ID, nombre, prioridad y tipo (urgente/normal).
+     * 
+     * @param tarea la tarea a mostrar
+     */
     @Override
     public void mostrarTarea(Tarea tarea) {
         String tipo = tarea instanceof TareaUrgente ? "[URGENTE]" : "[NORMAL]";
@@ -68,7 +97,12 @@ public class GestorTareas implements Accionable {
                 estado, tarea.getId(), tarea.getNombre(), tarea.getPrioridad(), tipo);
     }
 
-    // Marcar una tarea como completada
+    /**
+     * Marca una tarea como completada por su ID.
+     * Si la tarea ya está completada, muestra un mensaje de advertencia.
+     * 
+     * @param id el identificador único de la tarea
+     */
     @Override
     public void marcarCompletada(int id) {
         for (Tarea tarea : tareas) {
@@ -85,7 +119,12 @@ public class GestorTareas implements Accionable {
         System.out.println("✗ No se encontró tarea con ID: " + id);
     }
 
-    // Eliminar una tarea
+    /**
+     * Elimina una tarea de la lista por su ID.
+     * Muestra un mensaje de error si la tarea no existe.
+     * 
+     * @param id el identificador único de la tarea a eliminar
+     */
     @Override
     public void eliminarTarea(int id) {
         for (Tarea tarea : tareas) {
@@ -99,7 +138,11 @@ public class GestorTareas implements Accionable {
         System.out.println("✗ No se encontró tarea con ID: " + id);
     }
 
-    // Obtener el número de tareas
+    /**
+     * Obtiene el número total de tareas registradas.
+     * 
+     * @return la cantidad de tareas en la lista
+     */
     public int obtenerCantidadTareas() {
         return tareas.size();
     }

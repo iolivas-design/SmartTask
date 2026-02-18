@@ -1,7 +1,11 @@
 package aplicacion;
+
 /**
- * Interfaz Accionable que define las operaciones comunes
- * para la gestión de tareas.
+ * Interfaz que define las operaciones comunes para la gestión de tareas.
+ * Actúa como contrato que deben cumplir los gestores de tareas del sistema SmartTask.
+ * 
+ * @author SmartTask Team
+ * @version 1.0
  */
 public interface Accionable {
     
