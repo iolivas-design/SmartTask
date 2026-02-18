@@ -1,3 +1,4 @@
+package aplicacion;
 public class Tarea {
     // Atributos privados
     private int id;

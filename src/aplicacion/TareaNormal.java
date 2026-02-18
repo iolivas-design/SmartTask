@@ -1,3 +1,4 @@
+package aplicacion;
 public class TareaNormal extends Tarea {
     
     // Constructor sin parámetros

@@ -1,0 +1,5 @@
+# Compilar
+javac -cp "lib/*" -d bin -encoding UTF-8 src/aplicacion/*.java test/*.java
+
+# Ejecutar - Genera .txt con resultado de prueba
+java -cp "bin;lib/*" org.junit.platform.console.ConsoleLauncher --scan-classpath bin > log_test.txt 2>&1

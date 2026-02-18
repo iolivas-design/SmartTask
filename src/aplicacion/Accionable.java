@@ -1,3 +1,4 @@
+package aplicacion;
 /**
  * Interfaz Accionable que define las operaciones comunes
  * para la gestión de tareas.
